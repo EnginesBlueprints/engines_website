@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2018-03-05T08:38:38+11:00"
+    "timestamp": "2018-03-05T09:30:07+11:00"
   },
   "software": {
     "base": {
@@ -24,6 +24,12 @@
       "framework": "sinatra",
       "deployment_type": "web",
       "http_protocol": "http_and_https"
+    },
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\nbundle exec\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null\r\ncd /home/app\r\nruby start.rb -o 0.0.0.0 -p 8000 &\r\n\r\nsleep 600\r\n"
+      }
     },
     "installed_packages": [
       {
