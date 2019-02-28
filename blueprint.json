@@ -16,7 +16,7 @@
         "patch": 0
       }
     },
-    "timestamp": "2018-03-05T09:35:59+11:00"
+    "timestamp": "2019-02-28T21:48:37+11:00"
   },
   "software": {
     "base": {
@@ -29,7 +29,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\nbundle exec\r\necho migrating database \r\nbundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null\r\ncd /home/app\r\nbundle --standalone\r\nbundle exec ruby start.rb -o 0.0.0.0 -p 8000 &\r\n\r\n\r\n"
+        "content": "#!/bin/bash\r\n\r\ncd /home/app\r\ngit pull\r\n#bundle --standalone\r\n#echo migrating database \r\n#bundle exec rake db:migrate \r\necho precompiling assests\r\nbundle exec rake assets:precompile  >/dev/null\r\ncd /home/app\r\nbundle --standalone\r\nbundle exec ruby start.rb -o 0.0.0.0 -p 8000 &\r\n\r\n\r\n"
       }
     },
     "installed_packages": [
@@ -39,6 +39,22 @@
         "destination": "./",
         "extraction_command": "git",
         "path_to_extracted": "engines_website"
+      }
+    ],
+    "environment_variables": [
+      {
+        "name": "ENGINES_EXAMPLE_BLUEPRINT_URI",
+        "value": "https://raw.githubusercontent.com/EnginesBlueprints/Owncloud_new/master/blueprint.json",
+        "input": {
+          "type": "url"
+        }
+      },
+      {
+        "name": "http://library.engines.org/",
+        "value": "http://library.engines.org",
+        "input": {
+          "type": "url"
+        }
       }
     ],
     "file_write_permissions": [
